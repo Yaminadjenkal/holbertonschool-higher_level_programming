@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 # 12-roman_to_int.py
-# Brennan D Baraban <375@holbertonschool.com>
 
 
 def roman_to_int(roman_string):
@@ -24,9 +23,9 @@ def roman_to_int(roman_string):
         if roman_string[i] not in roman_dict:
             return 0
 
-        if i != (length - 1) and roman_dict[roman_string[i]] < roman_dict[roman_string[i + 1]]:
+        if i != (length - 1) and
+        roman_dict[roman_string[i]] < roman_dict[roman_string[i + 1]]:
             num -= roman_dict[roman_string[i]]
         else:
             num += roman_dict[roman_string[i]]
     return num
-
