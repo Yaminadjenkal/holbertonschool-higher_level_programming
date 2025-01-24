@@ -1,0 +1,112 @@
+# run test with python3 -m doctest -v ./tests/0-add_integer.txt
+
+===============================
+ How to Use 0-add_integer.py
+===============================
+
+Function usage for ``add_integer(a, b=98)``.
+
+GOOD USER
+=========
+
+``add_integer(...)`` returns the sum of its arguments.  For numbers,
+that value is equivalent to using the ``+`` operator.
+
+>>> add_integer = __import__('0-add_integer').add_integer
+
+::
+
+    >>> add_integer(7, 9)
+    16
+
+It also works with floating-point values...
+
+::
+
+    >>> add_integer(2.0, 3)
+    5
+
+It also works with signed numbers...
+
+::
+
+    >>> add_integer(-2.9, 3.0)
+    1
+
+Use without specifying the value of b (default 98)...
+
+::
+
+    >>> add_integer(2)
+    100
+
+BAD USER
+========
+
+Don't add characters...
+
+::
+
+    >>> add_integer('v', 2)
+    Traceback (most recent call last):
+    TypeError: a must be an integer
+
+::
+
+    >>> add_integer(2, 'v')
+    Traceback (most recent call last):
+    TypeError: b must be an integer
+
+Don't add nothing...
+
+::
+
+    >>> add_integer(None)
+    Traceback (most recent call last):
+    TypeError: a must be an integer
+
+Don't add more than 2 numbers at once...
+
+::
+
+    >>> add_integer(11, 22, 33)
+    Traceback (most recent call last):
+    TypeError: add_integer() takes from 1 to 2 positional arguments but 3 were given
+
+Don't add strings to numbers...
+
+::
+
+    >>> add_integer(2, "YOLO")
+    Traceback (most recent call last):
+    TypeError: b must be an integer
+
+Don't add lists of numbers...
+
+::
+
+    >>> add_integer(2, [4, 44, 444])
+    Traceback (most recent call last):
+    TypeError: b must be an integer
+
+Don't add numbers that cause an overflow error...
+
+::
+
+    >>> add_integer(float("inf"))
+    Traceback (most recent call last):
+    OverflowError: cannot convert float infinity to integer
+
+::
+
+    >>> add_integer(float("-inf"))
+    Traceback (most recent call last):
+    OverflowError: cannot convert float infinity to integer
+
+Don't add numbers that aren't numbers...
+
+::
+
+    >>> add_integer(float("NaN"))
+    Traceback (most recent call last):
+    ValueError: cannot convert float NaN to integer
