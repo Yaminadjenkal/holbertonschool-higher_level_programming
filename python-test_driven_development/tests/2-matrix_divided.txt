@@ -1,74 +1,111 @@
-# run test with python3 -m doctest -v ./tests/3-say_my_name.txt
+The ``matrix_divided`` module
+======================
 
-===============================
- How to Use 3-say_my_name.py
-===============================
+Using ``matrix_divided``
+-------------------
 
-Function usage for ``say_my_name(first_name, last_name="")``.
+Write a function that divides all elements of a matrix.
 
->>> say_my_name = __import__('3-say_my_name').say_my_name
+    Prototype: def matrix_divided(matrix, div):
+    matrix must be a list of lists of integers or floats, 
+    otherwise raise a TypeError exception with the message matrix must be a matrix (list of lists) 
+    of integers/floats
 
-GOOD USER
-=========
+    Each row of the matrix must be of the same size, otherwise raise a TypeError exception 
+    with the message Each row of the matrix must have the same size
 
-Can print a first name...
+    div must be a number (integer or float), otherwise raise a TypeError exception 
+    with the message div must be a number
 
-::
+    div can’t be equal to 0, otherwise raise a ZeroDivisionError exception 
+    with the message division by zero
 
-    >>> say_my_name("Timmah!")
-    My name is Timmah! 
+    All elements of the matrix should be divided by div, rounded to 2 decimal places
+    Returns a new matrix
+    You are not allowed to import any module
 
-Can print a first and last name...
-
-::
-
-    >>> say_my_name("Thad", "Castle")
-    My name is Thad Castle
-
-Can print no name... big sadge...
-
-::
-
-    >>> say_my_name("", "")
-    My name is  
-
-BAD USER
-========
-
-DO NOT enter a nonetype name
-
-::
-
-    >>> say_my_name(None)
-    Traceback (most recent call last):
-    TypeError: first_name must be a string
-
-DO NOT forget numbers are not names...
-
-::
-
-    >>> say_my_name(8)
-    Traceback (most recent call last):
-    TypeError: first_name must be a string
-
-::
-
-    >>> say_my_name("UWU", 4)
-    Traceback (most recent call last):
-    TypeError: last_name must be a string
-
-DO NOT try to include a middle name...
-
-::
-
-    >>> say_my_name("Too", "Tired", "Currently")
-    Traceback (most recent call last):
-    TypeError: say_my_name() takes from 1 to 2 positional arguments but 3 were given
-
-DO NOT forget to pass in a name...
-
-::
-
-	>>> say_my_name()
-	Traceback (most recent call last):
-	TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+>>> matrix = [[10, 8, 6], [20, 16, 12], [40, 32, 24]]
+>>> div = 2
+>>> matrix_divided(matrix, div)
+[[5.0, 4.0, 3.0], [10.0, 8.0, 6.0], [20.0, 16.0, 12.0]]
+>>> matrix = [[10, 8, 6], [20, 16, 12], [40, 32, 24]]
+>>> div = 3
+>>> matrix_divided(matrix, div)
+[[3.33, 2.67, 2.0], [6.67, 5.33, 4.0], [13.33, 10.67, 8.0]]
+>>> matrix = [[10, 8, 6], [20, 16, 12], [40, 32, 24]]
+>>> div = 0
+>>> matrix_divided(matrix, div)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 12, in matrix_divided
+ZeroDivisionError: division by zero
+>>> matrix = [[10, 8, 6], [20, 16, 12], [40, 32, 24]]
+>>> div = "5"
+>>> matrix_divided(matrix, div)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 10, in matrix_divided
+TypeError: div must be a number
+>>> matrix = [[10, 8, 6], [20, 16, 12], [40, 32, 24]]
+>>> div = 4.5557
+>>> matrix_divided(matrix, div)
+[[2.2, 1.76, 1.32], [4.39, 3.51, 2.63], [8.78, 7.02, 5.27]]
+>>> matrix = [[10, 8, 6], [20, 16, 12], [40, 32]]
+>>> div = 2
+>>> matrix_divided(matrix, div)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 17, in matrix_divided
+TypeError: Each row of the matrix must have the same size
+>>> matrix = [[10, 8, 6], [20, 16], [40, 32]]
+>>> div = 2
+>>> matrix_divided(matrix, div)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 17, in matrix_divided
+TypeError: Each row of the matrix must have the same size
+>>> matrix = [[10.25, 8.25, 6.25], [20.25, 16.25, 12.25], [40.25, 32.25, 24.25]]
+>>> div = 2
+>>> matrix_divided(matrix, div)
+[[5.12, 4.12, 3.12], [10.12, 8.12, 6.12], [20.12, 16.12, 12.12]]
+>>> matrix = [[10.25, 8.25, 6.25], [20.25, 16.25, 12.25], [40.25, 32.25, "24.25"]]
+>>> div = 2
+>>> matrix_divided(matrix, div)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 22, in matrix_divided
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+>>> matrix = [[10.25, 8.25, 6.25], [20.25, "16.25", 12.25], [40.25, 32.25, 24.25]] 
+>>> div = 2
+>>> matrix_divided(matrix, div)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 22, in matrix_divided
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+>>> matrix = [["10.25", 8.25, 6.25], [20.25, 16.25, 12.25], [40.25, 32.25, 24.25]]
+>>> div = 2
+>>> matrix_divided(matrix, div)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 22, in matrix_divided
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+>>> matrix = [[10, 8], 5]
+>>> div = 2
+>>> matrix_divided(matrix, div)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 17, in matrix_divided
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+>>> matrix = ["8", [5, 3]]
+>>> div = 2
+>>> matrix_divided(matrix, div)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 17, in matrix_divided
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+>>> matrix = [[10, 8], [5, 10]]
+>>> div = 2
+>>> len(matrix_divided(matrix, div)) == len(matrix)
+True
+>>>
