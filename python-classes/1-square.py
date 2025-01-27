@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 class Square:
-    '''class that defined a square'''
+    '''
+    class that defined a
+    square
+    '''
     
     
     def __init__(self,size):
