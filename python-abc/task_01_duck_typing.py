@@ -20,7 +20,7 @@ class Circle(Shape):
         return math.pi * (self.radius ** 2)
 
     def perimeter(self):
-        return 2 * math.pi * self.radius
+        return 2 * math.pi * abs(self.radius)
 
 # Définir la classe Rectangle qui hérite de Shape
 class Rectangle(Shape):
