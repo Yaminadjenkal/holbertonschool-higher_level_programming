@@ -1,4 +1,4 @@
-class verboselist(lis):
+class verboselist(list):
     def __init__(self, *args):
         super().__init__(*args)
     def append(self, item):
