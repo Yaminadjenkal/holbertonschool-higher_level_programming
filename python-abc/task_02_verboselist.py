@@ -16,9 +16,4 @@ class verboselist(lis):
         print(f"Popped [item] from the list.")
         super().pop(item)
         
-# Exemple d'utilisation
-vlist = VerboseList([1, 2, 3])
-vlist.append(4)
-vlist.remove(2)
-vlist.extend([5, 6])
-print(vlist)
+        
