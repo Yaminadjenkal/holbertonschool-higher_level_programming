@@ -32,3 +32,4 @@ if __name__ == "__main__":
     # Itère sur les éléments de counted_iter
     for item in counted_iter:
         pass  # Pass signifie qu'on ne fait rien de spécial avec les éléments dans cet exemple
+
