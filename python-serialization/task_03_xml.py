@@ -31,6 +31,11 @@ def deserialize_from_xml(filename):
                 value = True
             elif value.lower() == "false":
                 value = False
+            else:
+                try:
+                    value = float(value)
+                except ValueError:
+                    pass
             dictionary[child.tag] = value
         
         return dictionary
@@ -45,8 +50,10 @@ def deserialize_from_xml(filename):
 if __name__ == "__main__":
     sample_dict = {
         'name': 'John',
-        'age': '28',
-        'city': 'New York'
+        'age': 28,
+        'city': 'New York',
+        'is_student': True,
+        'height': 1.75
     }
 
     xml_file = "data.xml"
