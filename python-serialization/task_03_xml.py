@@ -1,6 +1,12 @@
 import xml.etree.ElementTree as ET
 
 def serialize_to_xml(dictionary, filename):
+    """
+    Serialize a Python dictionary to an XML file.
+
+    :param dictionary: A Python dictionary with data
+    :param filename: The filename of the output XML file. If the output file already exists, it will be replaced.
+    """
     # Créer un élément racine
     root = ET.Element("data")
     
@@ -15,6 +21,12 @@ def serialize_to_xml(dictionary, filename):
     tree.write(filename, encoding="utf-8", xml_declaration=True)
 
 def deserialize_from_xml(filename):
+    """
+    Deserialize an XML file to a Python dictionary.
+
+    :param filename: The filename of the input XML file
+    :return: A Python dictionary with the deserialized XML data from the file or None if an error occurs
+    """
     try:
         # Analyser le fichier XML
         tree = ET.parse(filename)
@@ -62,4 +74,3 @@ if __name__ == "__main__":
 
     deserialized_data = deserialize_from_xml(xml_file)
     print("\nDeserialized Data:")
-    print(deserialized_data)
