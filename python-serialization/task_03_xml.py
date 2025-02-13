@@ -43,16 +43,16 @@ def deserialize_from_xml(filename):
 
 # Exemple d'utilisation :
 if __name__ == "__main__":
-    # Exemple de dictionnaire
-    data = {
-        "name": "Alice",
-        "age": 30,
-        "is_student": False
+    sample_dict = {
+        'name': 'John',
+        'age': '28',
+        'city': 'New York'
     }
-    
-    # Sérialiser le dictionnaire en fichier XML
-    serialize_to_xml(data, "data.xml")
-    
-    # Désérialiser les données à partir du fichier XML
-    loaded_data = deserialize_from_xml("data.xml")
-    print(loaded_data)
+
+    xml_file = "data.xml"
+    serialize_to_xml(sample_dict, xml_file)
+    print(f"Dictionary serialized to {xml_file}")
+
+    deserialized_data = deserialize_from_xml(xml_file)
+    print("\nDeserialized Data:")
+    print(deserialized_data)
