@@ -23,8 +23,8 @@ def deserialize_from_xml(filename):
         # Reconstituer le dictionnaire à partir des éléments XML
         dictionary = {}
         for child in root:
-            # Convertir la chaîne de caractères en type approprié si nécessaire
             value = child.text
+            # Convertir la chaîne de caractères en type approprié si nécessaire
             if value.isdigit():
                 value = int(value)
             elif value.lower() == "true":
