@@ -1,11 +1,12 @@
 #!/usr/bin/python3
 
 from flask import Flask, jsonify, request
-from flask_httpauth import HTTPBasicAuth # type: ignore
-from flask_jwt_extended import ( # type: ignore
+from flask_httpauth import HTTPBasicAuth  # type: ignore
+from flask_jwt_extended import (  # type: ignore
     JWTManager, create_access_token, jwt_required, get_jwt_identity
 )
 from werkzeug.security import generate_password_hash, check_password_hash
+
 
 app = Flask(__name__)
 
@@ -29,9 +30,7 @@ users = {
 
 @auth.verify_password
 def verify_password(username, password):
-    if username in users and check_password_hash(
-        users[username]["password"], password
-    ):
+    if username in users and check_password_hash(users[username]["password"], password):
         return username
     return None
 
@@ -48,9 +47,7 @@ def login():
     username = data.get("username")
     password = data.get("password")
 
-    if username in users and check_password_hash(
-        users[username]["password"], password
-    ):
+    if username in users and check_password_hash(users[username]["password"], password):
         access_token = create_access_token(
             identity={"username": username, "role": users[username]["role"]}
         )
